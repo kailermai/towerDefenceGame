@@ -33,14 +33,14 @@ public class Enemy : MonoBehaviour
             {
                 curPathWaypoint++;
             }
-
-            else
-            {
-                GameManager.instance.TakeDamage(damageToPlayer);
-                GameManager.instance.onEnemyDestroyed.Invoke();
-                Destroy(gameObject);
-            }
         }
+        else
+        {
+            GameManager.instance.TakeDamage(damageToPlayer);
+            GameManager.instance.onEnemyDestroyed.Invoke();
+            Destroy(gameObject);
+        }
+
     }
 
     public void TakeDamage(int amount)

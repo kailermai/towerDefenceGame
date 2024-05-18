@@ -103,7 +103,16 @@ public class Tower : MonoBehaviour
 
     void Attack()
     {
+        //To look at the current target
+        if (rotateTowardsTarget)
+        {
+            transform.LookAt(curEnemy.transform);
+            //To lock it to rotate only along the y axis
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        }
 
+        GameObject proj = Instantiate(projectilePrefab, projectileSpawnPos.position, Quaternion.identity);
+        proj.GetComponent<Projectile>().Initialise(curEnemy, projectileDamage, projectileSpeed);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -2467,14 +2467,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5754875a7134e118648527e38be4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
+  range: 2
   targetPriority: 0
   rotateTowardsTarget: 0
-  attackRate: 0
-  projectilePrefab: {fileID: 0}
-  projectileSpawnPos: {fileID: 0}
-  projectileDamage: 0
-  projectileSpeed: 0
+  attackRate: 0.5
+  projectilePrefab: {fileID: 562137963366359690, guid: 678a145f85da943a4881f5c4441f9757, type: 3}
+  projectileSpawnPos: {fileID: 1529196643}
+  projectileDamage: 1
+  projectileSpeed: 6
 --- !u!4 &1404420309
 Transform:
   m_ObjectHideFlags: 0
