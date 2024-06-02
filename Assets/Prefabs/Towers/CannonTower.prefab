@@ -53,7 +53,7 @@ MonoBehaviour:
   attackRate: 0.8
   projectilePrefab: {fileID: 8038142890768821870, guid: 3c443337fb78b4e0f81b0995d86779c5, type: 3}
   projectileSpawnPos: {fileID: 7677255795930418798}
-  projectileDamage: 2
+  projectileDamage: 0
   projectileSpeed: 6
 --- !u!135 &5451287374360280707
 SphereCollider:

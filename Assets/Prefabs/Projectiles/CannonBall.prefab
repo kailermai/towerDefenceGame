@@ -128,4 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a4f302dfe9f4a0cad2acd17833c027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSpawnPrefab: {fileID: 0}
+  hitSpawnPrefab: {fileID: 4188152699373815908, guid: 8c5f15ecc7a7c47adb235a39141de7c2, type: 3}
