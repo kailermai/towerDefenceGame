@@ -51,6 +51,7 @@ MonoBehaviour:
   damageToPlayer: 1
   moneyOnDeath: 100
   moveSpeed: 1
+  healthBarPrefab: {fileID: 1071504273696953391, guid: 7fdf043caac8243cebaab6220e62964a, type: 3}
 --- !u!54 &2110078559269720491
 Rigidbody:
   m_ObjectHideFlags: 0
