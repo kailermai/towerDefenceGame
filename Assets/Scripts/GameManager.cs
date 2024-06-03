@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI healthAndMoneyText;
     public EnemyPath enemyPath;
     public TowerPlacement towerPlacement;
+    public EndScreenUI endScreen;
+    public WaveSpawner waveSpawner;
 
     [Header("Events")]
     public UnityEvent onEnemyDestroyed;
@@ -65,16 +67,22 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        endScreen.gameObject.SetActive(true);
+        endScreen.SetEndScreen(false, waveSpawner.curWave);
 
     }
 
     void WinGame()
     {
-
+        endScreen.gameObject.SetActive(true);
+        endScreen.SetEndScreen(true, waveSpawner.curWave);
     }
 
     public void OnEnemyDestroyed()
     {
-
+        if (waveSpawner.remainingEnemies == 0 && waveSpawner.curWave == waveSpawner.waves.Length)
+        {
+            WinGame();
+        }
     }
 }

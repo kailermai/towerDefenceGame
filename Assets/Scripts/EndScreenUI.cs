@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EndScreenUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI headerText;
+    public TextMeshProUGUI bodyText;
+
+    public void SetEndScreen(bool didWin, int roundsSurvived)
     {
-        
+        headerText.text = didWin ? "You Win!" : "Game Over!";
+        headerText.color = didWin ? Color.green : Color.red;
+        bodyText.text = $"You survived {roundsSurvived} rounds.";
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPlayAgainButton()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnQuitButton()
+    {
+        Application.Quit();
     }
 }
