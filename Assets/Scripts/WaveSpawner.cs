@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -13,6 +14,20 @@ public class WaveSpawner : MonoBehaviour
     public Transform enemySpawnPos;
     public TextMeshProUGUI waveText;
     public GameObject nextWaveButton;
+
+
+    [Header("Events")]
+    public UnityEvent OnEnemyRemoved;
+
+    void OnEnable()
+    {
+        Enemy.OnDestroyed += OnEnemyDestroyed;
+    }
+
+    void OnDisable()
+    {
+        Enemy.OnDestroyed -= OnEnemyDestroyed;
+    }
 
     public void SpawnNextWave()
     {
@@ -59,5 +74,7 @@ public class WaveSpawner : MonoBehaviour
         {
             nextWaveButton.SetActive(true);
         }
+
+        OnEnemyRemoved?.Invoke();
     }
 }

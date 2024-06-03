@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Enemy : MonoBehaviour
     private int curPathWaypoint;
 
     public GameObject healthBarPrefab;
+
+    public static event UnityAction OnDestroyed;
 
     void Start()
     {
@@ -44,7 +47,7 @@ public class Enemy : MonoBehaviour
         else
         {
             GameManager.instance.TakeDamage(damageToPlayer);
-            GameManager.instance.onEnemyDestroyed.Invoke();
+            OnDestroyed.Invoke();
             Destroy(gameObject);
         }
 
@@ -57,7 +60,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             GameManager.instance.AddMoney(moneyOnDeath);
-            GameManager.instance.onEnemyDestroyed.Invoke();
+            OnDestroyed.Invoke();
             Destroy(gameObject);
         }
     }

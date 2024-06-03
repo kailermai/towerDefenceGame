@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int health;
     public int money;
+    private bool gameActive;
 
     [Header("Components")]
     public TextMeshProUGUI healthAndMoneyText;
@@ -17,11 +18,20 @@ public class GameManager : MonoBehaviour
     public WaveSpawner waveSpawner;
 
     [Header("Events")]
-    public UnityEvent onEnemyDestroyed;
     public UnityEvent onMoneyChanged;
 
     //Singleton
     public static GameManager instance;
+
+    void OnEnable()
+    {
+        waveSpawner.OnEnemyRemoved.AddListener(OnEnemyDestroyed);
+    }
+
+    void OnDisable()
+    {
+        waveSpawner.OnEnemyRemoved.RemoveListener(OnEnemyDestroyed);
+    }
 
     void Awake()
     {
@@ -30,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        gameActive = true;
         UpdateHealthAndMoneyText();
     }
     void UpdateHealthAndMoneyText()
@@ -67,6 +78,7 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        gameActive = false;
         endScreen.gameObject.SetActive(true);
         endScreen.SetEndScreen(false, waveSpawner.curWave);
 
@@ -74,12 +86,18 @@ public class GameManager : MonoBehaviour
 
     void WinGame()
     {
+        gameActive = false;
         endScreen.gameObject.SetActive(true);
         endScreen.SetEndScreen(true, waveSpawner.curWave);
     }
 
     public void OnEnemyDestroyed()
     {
+        if (!gameActive)
+        {
+            return;
+        }
+
         if (waveSpawner.remainingEnemies == 0 && waveSpawner.curWave == waveSpawner.waves.Length)
         {
             WinGame();
