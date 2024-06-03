@@ -8,7 +8,7 @@ Features:
 - Tower placement
 - Wave spawning system
 - Enemy health bars
-- DIfferent tower attack types (projectile and explosion animations)
+- Different tower attack types (projectile and explosion animations)
 
 This game is just a fun project, with only 2 waves and 2 towers to build.
 
